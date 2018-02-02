@@ -1,0 +1,6 @@
+{
+  "name": "contenta-app",
+  "short_name": "contenta-app",
+  "start_url": "/",
+  "display": "standalone"
+}

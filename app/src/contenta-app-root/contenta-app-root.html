@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="contenta-app-root">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>List of Tutorials [[tutorials.length]]</h2>
+
+    <ul>
+      <template is="dom-repeat" items="[[tutorials]]">
+        <li>[[item.attributes.title]]</li>
+      </template>
+    </ul>
+    
+
+    <iron-ajax
+       auto
+       url="http://localhost/api/node/tutorial"
+       handle-as="json"
+       on-response="handleResponse"></iron-ajax>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'contenta-app-root',
+
+      properties: {
+        tutorials: {
+          type: Array,
+          value: [],
+        },
+      },
+
+      handleResponse: function (e) {
+        if (e.detail) {
+          this.tutorials = e.detail.response.data;
+        }
+      }
+
+    });
+  </script>
+</dom-module>

@@ -1,5 +1,11 @@
 version: '3'
 services:
+  app:
+    image: nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app:/usr/share/nginx/html:ro
   nginx:
     build: ./nginx
     ports:
